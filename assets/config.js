@@ -64,22 +64,26 @@ window.TV = {
     { id:'alvani', slug:'alvani', nome:'Alvani', cargo:'Cabeleireira e dona do salão', foto:'', instagram:'amavia_federacao' }
   ],
 
-  // A CONFIRMAR: preços. Serviços tirados dos posts e destaques do Instagram
-  // (permanente, permanente afro, luzes, coloração, botox, banho de gloss,
-  // tratamentos). Sem preço = "sob consulta"; ela preenche no painel.
-  // retorno_dias: depois de quantos dias o painel sugere chamar a cliente de volta.
+  // Tabela de preços do balcão (foto enviada pelo Natham em 15/10/2026).
+  // Todos os valores são "a partir de": o preço final depende do comprimento e do volume.
+  // Durações estimadas, a confirmar. retorno_dias: depois de quantos dias o painel
+  // sugere chamar a cliente de volta (0 = não chama).
   servicosDemo: [
-    { id:'permanente-afro', nome:'Permanente afro',         descricao:'Alisamento definitivo para cabelo crespo e cacheado, com o fio tratado antes e depois da química. Resultado liso, com brilho e movimento.', preco_centavos:0, a_partir_de:false, duracao_min:180, retorno_dias:60, categoria:'Assinatura' },
-    { id:'retoque-raiz',    nome:'Retoque de raiz',         descricao:'Para quem já tem a química: aplica só na raiz que cresceu, sem sobrepor o comprimento.', preco_centavos:0, a_partir_de:false, duracao_min:120, retorno_dias:60, categoria:'Química e alisamento' },
-    { id:'selagem',         nome:'Selagem / progressiva',   descricao:'Reduz o volume e o frizz e deixa o fio alinhado por meses.', preco_centavos:0, a_partir_de:false, duracao_min:180, retorno_dias:90, categoria:'Química e alisamento' },
-    { id:'botox',           nome:'Botox capilar',           descricao:'Repõe massa no fio, sela a cutícula e tira o frizz. Ótimo entre uma química e outra.', preco_centavos:0, a_partir_de:false, duracao_min:120, retorno_dias:45, categoria:'Química e alisamento' },
-    { id:'hidratacao',      nome:'Hidratação / nutrição',   descricao:'Devolve maciez e brilho. A base do cronograma capilar.', preco_centavos:0, a_partir_de:false, duracao_min:60, retorno_dias:15, categoria:'Tratamentos' },
-    { id:'reconstrucao',    nome:'Reconstrução',            descricao:'Para fio quebradiço, elástico ou danificado por química e calor.', preco_centavos:0, a_partir_de:false, duracao_min:90, retorno_dias:30, categoria:'Tratamentos' },
-    { id:'gloss',           nome:'Banho de gloss',          descricao:'Brilho espelhado e cor mais viva, sem química pesada.', preco_centavos:0, a_partir_de:false, duracao_min:60, retorno_dias:30, categoria:'Tratamentos' },
-    { id:'coloracao',       nome:'Coloração',               descricao:'Cor uniforme da raiz às pontas: do castanho ao marsala.', preco_centavos:0, a_partir_de:false, duracao_min:120, retorno_dias:40, categoria:'Cor' },
-    { id:'luzes',           nome:'Luzes / mechas',          descricao:'Iluminação feita mecha a mecha, com tonalização no final.', preco_centavos:0, a_partir_de:false, duracao_min:210, retorno_dias:60, categoria:'Cor' },
-    { id:'corte',           nome:'Corte',                   descricao:'Corte com lavagem e finalização simples.', preco_centavos:0, a_partir_de:false, duracao_min:60, retorno_dias:45, categoria:'Corte e finalização' },
-    { id:'escova',          nome:'Escova',                  descricao:'Lavagem e escova modelada.', preco_centavos:0, a_partir_de:false, duracao_min:60, retorno_dias:0, categoria:'Corte e finalização' }
+    { id:'permanente-afro',  nome:'Permanente',                 descricao:'Alisamento definitivo para cabelo crespo e cacheado, com o fio tratado antes e depois da química. Resultado liso, com brilho e movimento.', preco_centavos:20000, a_partir_de:true, duracao_min:180, retorno_dias:60, categoria:'Assinatura' },
+    { id:'progressiva',      nome:'Progressiva',                descricao:'Alinha o fio, reduz o volume e tira o frizz por meses.', preco_centavos:18000, a_partir_de:true, duracao_min:180, retorno_dias:90, categoria:'Química e alisamento' },
+    { id:'selagem',          nome:'Selagem',                    descricao:'Sela a cutícula e deixa o cabelo alinhado e brilhante, com menos química que a progressiva.', preco_centavos:16000, a_partir_de:true, duracao_min:150, retorno_dias:90, categoria:'Química e alisamento' },
+    { id:'botox',            nome:'Botox capilar',              descricao:'Repõe massa no fio, sela a cutícula e tira o frizz. Ótimo entre uma química e outra.', preco_centavos:13000, a_partir_de:true, duracao_min:120, retorno_dias:45, categoria:'Química e alisamento' },
+    { id:'soltura-cacho',    nome:'Soltura de cacho',           descricao:'Afrouxa a curvatura e deixa o cacho mais aberto e fácil de cuidar, sem alisar.', preco_centavos:15000, a_partir_de:true, duracao_min:150, retorno_dias:60, categoria:'Cachos' },
+    { id:'cachoterapia',     nome:'Cachoterapia',               descricao:'Tratamento e finalização para o cacho ficar definido, hidratado e sem frizz.', preco_centavos:7000, a_partir_de:true, duracao_min:90, retorno_dias:30, categoria:'Cachos' },
+    { id:'cauterizacao',     nome:'Cauterização',               descricao:'Reconstrução que fecha a cutícula e devolve força ao fio danificado por química e calor.', preco_centavos:12000, a_partir_de:true, duracao_min:90, retorno_dias:30, categoria:'Tratamentos' },
+    { id:'algas',            nome:'Algas',                      descricao:'Tratamento com algas que nutre e devolve maciez e brilho.', preco_centavos:9000, a_partir_de:true, duracao_min:60, retorno_dias:30, categoria:'Tratamentos' },
+    { id:'algas-escova',     nome:'Algas com escova',           descricao:'O tratamento com algas, já finalizado com escova.', preco_centavos:13000, a_partir_de:true, duracao_min:90, retorno_dias:30, categoria:'Tratamentos' },
+    { id:'aplicacao-produto',nome:'Aplicação de produto',       descricao:'Comprou o produto aqui? A gente aplica na hora, do jeito certo.', preco_centavos:10000, a_partir_de:true, duracao_min:60, retorno_dias:30, categoria:'Tratamentos' },
+    { id:'coloracao-aplicacao', nome:'Aplicação de coloração',  descricao:'Você traz a sua tinta e a gente aplica.', preco_centavos:5000, a_partir_de:true, duracao_min:60, retorno_dias:40, categoria:'Cor' },
+    { id:'coloracao-casa',   nome:'Coloração com tinta da casa',descricao:'Coloração com o produto do salão.', preco_centavos:8000, a_partir_de:true, duracao_min:90, retorno_dias:40, categoria:'Cor' },
+    { id:'coloracao-todo',   nome:'Coloração do cabelo todo',   descricao:'Cor uniforme da raiz às pontas: do castanho ao marsala.', preco_centavos:12000, a_partir_de:true, duracao_min:120, retorno_dias:40, categoria:'Cor' },
+    { id:'corte',            nome:'Corte',                      descricao:'Corte com finalização simples.', preco_centavos:5000, a_partir_de:true, duracao_min:60, retorno_dias:45, categoria:'Corte e finalização' },
+    { id:'escova',           nome:'Escova',                     descricao:'Lavagem e escova modelada.', preco_centavos:5000, a_partir_de:true, duracao_min:60, retorno_dias:0, categoria:'Corte e finalização' }
   ]
 };
 

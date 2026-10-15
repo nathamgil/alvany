@@ -104,7 +104,7 @@
   // fica um dia de verdade: 10 semanas de histórico (alimenta a aba Clientes
   // do painel) e a próxima semana marcada. Clientes fictícias, com "(exemplo)".
   function demoSemeia() {
-    try { if (localStorage.getItem('av_demo_semeado_v3')) return; } catch (e) { return; }
+    try { if (localStorage.getItem('av_demo_semeado_v4')) return; } catch (e) { return; }
     try { localStorage.removeItem(CHAVE); } catch (e) {}
     var clientes = ['Ana Souza','Juliana Matos','Camila Araújo','Beatriz Costa','Larissa Reis','Fernanda Oliveira',
                     'Gabriela Lima','Carla Freitas','Patrícia Hora','Vitória Bastos','Amanda Pires','Isabela Nunes',
@@ -116,7 +116,7 @@
                     'Raquel Menezes','Débora Leal','Cíntia Moraes','Paula Teixeira','Andreia Reis','Sueli Cardoso',
                     'Marta Gomes','Nádia Fonseca','Silvana Ramos','Karina Vieira','Lorena Dantas','Yasmin Coelho'];
     // química, retoque e tratamento pesam mais: é o que o salão mais faz
-    var pesos = { 'permanente-afro': 3, 'retoque-raiz': 3, 'botox': 2, 'hidratacao': 3, 'escova': 2 };
+    var pesos = { 'permanente-afro': 4, 'escova': 4, 'botox': 2, 'progressiva': 2, 'algas': 2, 'corte': 2, 'coloracao-casa': 2 };
     var sorteio = [];
     CFG.servicosDemo.forEach(function (s) { for (var k = 0; k < (pesos[s.id] || 1); k++) sorteio.push(s); });
     var lista = [], semente = 11;
@@ -153,7 +153,7 @@
       });
     }
     demoGrava(lista);
-    try { localStorage.setItem('av_demo_semeado_v3', '1'); } catch (e) {}
+    try { localStorage.setItem('av_demo_semeado_v4', '1'); } catch (e) {}
   }
 
   function demoSlotsBarbeiro(dataIso, servico, barbeiroId) {

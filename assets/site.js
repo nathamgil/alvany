@@ -100,7 +100,7 @@
   }
   var caixaProx = $('#proximo');
   if (caixaProx) dados.then(function (d) {
-    var servRef = d.servicos.filter(function (s) { return s.id === 'hidratacao' || s.slug === 'hidratacao'; })[0] || d.servicos[0];
+    var servRef = d.servicos.filter(function (s) { return s.id === 'escova' || s.slug === 'escova'; })[0] || d.servicos[0];
     var b = d.barbeiros[0];
     var qd = $('#px-quando'), com = $('#px-com'), bt = $('#px-reservar');
     if (!b || !servRef) return;

@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/estilo.css?v=20261015140849">
+<link rel="stylesheet" href="assets/estilo.css?v=20261015142151">
 <style>
   .barra-dia{display:flex;align-items:center;gap:.6rem;margin:1.2rem 0}
   .barra-dia h2{font-size:1.3rem;flex:1}
@@ -202,9 +202,9 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="assets/config.js?v=20261015140849"></script>
+<script src="assets/config.js?v=20261015142151"></script>
 <!-- só para semear a demonstração quando o painel é aberto antes do site -->
-<script src="assets/agenda.js?v=20261015140849"></script>
+<script src="assets/agenda.js?v=20261015142151"></script>
 <script>
 (function () {
   'use strict';
@@ -554,10 +554,13 @@
   if (!CFG.modoDemo && DADOS.servicos) DADOS.servicos().then(function (l) { (l || []).forEach(function (s) { RETORNO[s.nome] = s.retorno_dias || 0; }); });
   function retornoDe(nome) { return RETORNO[nome] || 0; }
   var FRASE_RETORNO = {
-    'Permanente afro': 'a raiz já deve ter crescido, tá na hora do retoque',
-    'Retoque de raiz': 'a raiz já deve ter crescido, tá na hora do próximo retoque',
-    'Hidratação / nutrição': 'tá na hora da próxima hidratação pro cabelo seguir macio',
-    'Coloração': 'a raiz já deve estar aparecendo, tá na hora de retocar a cor'
+    'Permanente': 'a raiz já deve ter crescido, tá na hora do retoque',
+    'Progressiva': 'a progressiva já deve estar saindo, tá na hora de refazer',
+    'Botox capilar': 'tá na hora do próximo botox pro cabelo seguir sem frizz',
+    'Coloração com tinta da casa': 'a raiz já deve estar aparecendo, tá na hora de retocar a cor',
+    'Coloração do cabelo todo': 'a raiz já deve estar aparecendo, tá na hora de retocar a cor',
+    'Aplicação de coloração': 'a raiz já deve estar aparecendo, tá na hora de retocar a cor',
+    'Cachoterapia': 'tá na hora da próxima cachoterapia pro cacho seguir definido'
   };
 
   function pintaClientes() {
@@ -715,6 +718,11 @@
       atualizaTudo();
     });
   });
+  // admin.html#clientes abre direto na aba (atalho para a demonstração)
+  if (location.hash) setTimeout(function () {
+    var b = document.querySelector('.aba[data-aba="' + location.hash.slice(1) + '"]');
+    if (b && !$('#tela-painel').hidden) b.click();
+  }, 300);
 
   $('#bl-tipo').addEventListener('change', function () { $('#campo-faixa').hidden = this.value !== 'faixa'; });
 
