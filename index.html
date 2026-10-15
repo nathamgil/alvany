@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salão Alvany · Federação, Salvador · Agende online</title>
+<meta name="description" content="Salão de beleza na Federação, Salvador. Permanente afro, tratamentos, cor e corte. Agende seu horário online e confirme na hora.">
+<meta name="theme-color" content="#3A1426">
+<link rel="icon" href="fotos/icone.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Salão Alvany · Federação, Salvador · Agende online">
+<meta property="og:description" content="Salão de beleza na Federação, Salvador. Permanente afro, tratamentos, cor e corte. Agende seu horário online e confirme na hora.">
+<meta property="og:image" content="fotos/liso-longo.jpg">
+<meta property="og:locale" content="pt_BR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/estilo.css?v=20261015140849">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HairSalon","name":"Salão Alvany","telephone":"+55 71 98754-7024",
+ "address":{"@type":"PostalAddress","addressLocality":"Salvador","addressRegion":"BA","streetAddress":"Federação","addressCountry":"BR"},
+ "sameAs":["https://www.instagram.com/amavia_federacao/"],
+ "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"18:00"}]}
+</script>
+</head>
+<body>
+
+<div id="faixa-demo" class="faixa-demo" hidden>
+  <b>Versão de demonstração.</b> A agenda funciona de verdade aqui, mas os horários ficam só neste aparelho até ligarmos o banco de dados.
+</div>
+
+<header class="topo">
+  <div class="wrap topo-in">
+    <a class="marca" href="index.html" aria-label="Salão Alvany, início">
+      <span class="selo-a" aria-hidden="true">A</span>
+      <span><b>Alvany</b><small>Salão de beleza</small></span>
+    </a>
+    <nav class="menu" aria-label="Principal">
+      <a href="index.html" aria-current="page">Início</a>
+      <a href="servicos.html">Serviços</a>
+      <a href="resultados.html">Resultados</a>
+      <a href="salao.html">O salão</a>
+      <a href="agendar.html#meu-horario">Meu horário</a>
+    </nav>
+    <span class="status" data-status></span>
+    <a class="btn btn-prata" href="agendar.html">Agendar horário</a>
+    <button class="btn-menu" id="btn-menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="gaveta">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="gaveta" id="gaveta">
+  <nav class="gaveta-in" aria-label="Menu">
+    <button class="gaveta-fechar" type="button" aria-label="Fechar menu">×</button>
+    <a class="link" href="index.html" aria-current="page">Início</a>
+    <a class="link" href="servicos.html">Serviços</a>
+    <a class="link" href="resultados.html">Resultados</a>
+    <a class="link" href="salao.html">O salão</a>
+    <a class="link" href="agendar.html#meu-horario">Meu horário</a>
+    <a class="btn btn-prata" href="agendar.html">Agendar horário</a>
+    <a class="btn btn-zap" data-zap>Chamar no WhatsApp</a>
+  </nav>
+</div>
+
+<section class="hero escuro">
+  <div class="wrap hero-in">
+    <div class="hero-txt">
+      <span class="selo">✦ Salão de beleza na Federação · Salvador</span>
+      <h1>Cabelo saudável, <em>do jeito que você sonha.</em></h1>
+      <p class="lead">
+        Permanente afro, tratamentos, cor e corte, com quem entende de cabelo crespo e cacheado.
+        Marque seu horário em um minuto, direto por aqui.
+      </p>
+
+      <p class="rotulo">O que você quer fazer?</p>
+      <div class="atalhos" id="atalhos"><div class="carregando">Carregando a agenda…</div></div>
+
+      <div class="hero-rodape">
+        <span class="status" data-status></span>
+        <span><b>Federação</b> · Salvador</span>
+        <span><b>Seg a Sáb</b> · 9h às 18h</span>
+      </div>
+    </div>
+
+    <div class="hero-foto">
+      <div class="arco"><img src="fotos/liso-longo.jpg" alt="Cliente de costas mostrando o cabelo longo, liso e brilhante, feito no salão." width="540" height="960"></div>
+      <aside class="proximo" id="proximo" aria-live="polite">
+        <p class="rotulo">Próximo horário livre</p>
+        <div class="proximo-quando" id="px-quando">Procurando…</div>
+        <p class="proximo-com" id="px-com">&nbsp;</p>
+        <a class="btn btn-prata" id="px-reservar" href="agendar.html" aria-disabled="true">Reservar esse horário</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="selos">
+    <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><b>Confirmação na hora</b>, com código</span>
+    <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Cancela sozinha até <b>2h antes</b></span>
+    <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>Agenda aberta <b>30 dias</b> à frente</span>
+  </div>
+</div>
+
+<section class="secao" id="especialidades">
+  <div class="wrap">
+    <p class="olho">O que a gente faz</p>
+    <h2>Do crespo ao liso, <em class="ouro">da raiz às pontas</em></h2>
+    <p class="sub">Cada serviço já reserva o tempo que realmente leva. Ninguém é encaixada correndo em cima de outra cliente.</p>
+
+    <div class="destaques">
+      <a class="destaque revela" href="servicos.html#quimica-e-alisamento">
+        <img src="fotos/liso-brilho.jpg" loading="lazy" alt="Cabelo liso e brilhante depois do permanente." style="object-position:50% 20%">
+        <div><h3>Permanente afro</h3><p>Alisamento definitivo, retoque de raiz, selagem e botox capilar.</p><span>Ver química →</span></div>
+      </a>
+      <a class="destaque revela" href="servicos.html#tratamentos">
+        <img src="fotos/liso-longo.jpg" loading="lazy" alt="Cabelo longo hidratado e com brilho." style="object-position:50% 60%">
+        <div><h3>Tratamentos</h3><p>Hidratação, nutrição, reconstrução e banho de gloss.</p><span>Ver tratamentos →</span></div>
+      </a>
+      <a class="destaque revela" href="servicos.html#cor">
+        <img src="fotos/coloracao-marsala.jpg" loading="lazy" alt="Cabelo liso com coloração marsala.">
+        <div><h3>Cor</h3><p>Coloração, luzes e mechas, com cuidado para o fio não sofrer.</p><span>Ver cor →</span></div>
+      </a>
+      <a class="destaque revela" href="servicos.html#corte-e-finalizacao">
+        <img src="fotos/corte-chanel.jpg" loading="lazy" alt="Cabelo preto liso em corte na altura dos ombros.">
+        <div><h3>Corte e escova</h3><p>Corte, escova e finalização para sair pronta.</p><span>Ver corte →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="secao escuro">
+  <div class="wrap lado-a-lado">
+    <div class="antes-depois revela">
+      <figure><img src="fotos/volume-afro.jpg" loading="lazy" alt="Cabelo crespo natural, com bastante volume."><figcaption>Natural</figcaption></figure>
+      <figure><img src="fotos/liso-brilho.jpg" loading="lazy" alt="Cabelo liso e brilhante depois do permanente afro."><figcaption>Com permanente</figcaption></figure>
+    </div>
+    <div class="revela">
+      <p class="olho">Permanente afro</p>
+      <h2>Liso de verdade, <em class="ouro">sem judiar do fio</em></h2>
+      <p class="sub">É o serviço que mais sai do salão. O segredo é o cuidado antes e depois da química.</p>
+      <ul class="lista-check">
+        <li>Avaliação do fio antes de aplicar qualquer produto</li>
+        <li>Tratamento junto com a química, para o cabelo não ressecar</li>
+        <li>Retoque só na raiz que cresceu, sem sobrepor o comprimento</li>
+        <li>O salão te avisa quando estiver na hora do retoque</li>
+      </ul>
+      <a class="btn btn-prata" href="agendar.html?servico=permanente-afro">Agendar permanente</a>
+    </div>
+  </div>
+</section>
+
+<section class="secao">
+  <div class="wrap">
+    <p class="olho">Como funciona</p>
+    <h2>Marcou, <em class="ouro">tá marcado</em></h2>
+    <div class="passos-3">
+      <div class="passo-3 revela"><b>Escolha o serviço</b><p>Cada um já mostra quanto tempo leva, para você se programar.</p></div>
+      <div class="passo-3 revela"><b>Pegue o dia e a hora</b><p>Só aparece o que está vago de verdade. Nada de "vou ver e te falo".</p></div>
+      <div class="passo-3 revela"><b>Pronto, confirmado</b><p>Você recebe um código para consultar ou cancelar sozinha, até 2h antes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="secao" style="padding-top:0">
+  <div class="wrap">
+    <div class="loja lado-a-lado">
+      <div>
+        <p class="olho">Compre e aplique no mesmo lugar</p>
+        <h2>Os produtos que a gente usa, <em class="ouro">pra você levar</em></h2>
+        <p class="sub">Máscaras, shampoos e finalizadores para manter o resultado em casa. Pediu pelo WhatsApp? A gente entrega em domicílio.</p>
+        <div class="acoes"><a class="btn btn-zap" data-zap="Oi, Alvani! Quero saber dos produtos para levar pra casa.">Pedir produtos no WhatsApp</a></div>
+      </div>
+      <div class="foto-redonda revela"><img src="fotos/corte-chanel.jpg" loading="lazy" alt="Cliente no salão, com as prateleiras de produtos ao fundo."></div>
+    </div>
+  </div>
+</section>
+
+<section class="secao" style="padding-top:0">
+  <div class="wrap">
+    <div class="chamada escuro">
+      <div>
+        <h2>Bora cuidar desse cabelo?</h2>
+        <p>Escolha o serviço, o dia e a hora. A confirmação sai na hora, sem esperar resposta no WhatsApp.</p>
+      </div>
+      <div class="acoes" style="margin:0">
+        <a class="btn btn-prata" href="agendar.html">Agendar horário</a>
+        <a class="btn btn-linha" data-zap>Tirar dúvida no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="rodape">
+  <div class="wrap">
+    <div class="rodape-in">
+      <div style="max-width:22rem">
+        <a class="marca" href="index.html" style="color:#fff"><span class="selo-a" aria-hidden="true">A</span><span><b style="color:#fff">Alvany</b><small style="color:#E6D3DA">Salão de beleza</small></span></a>
+        <p style="margin-top:1rem">Química, tratamento, cor e corte para todos os tipos de cabelo. Federação, Salvador · BA.</p>
+      </div>
+      <div>
+        <b class="rodape-titulo">Navegar</b>
+        <ul class="rodape-links">
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="resultados.html">Resultados</a></li>
+          <li><a href="salao.html">O salão e como chegar</a></li>
+          <li><a href="agendar.html">Agendar horário</a></li>
+          <li><a href="agendar.html#meu-horario">Consultar ou cancelar</a></li>
+        </ul>
+      </div>
+      <div>
+        <b class="rodape-titulo">Falar com a Alvani</b>
+        <ul class="rodape-links">
+          <li><a data-zap>(71) 98754-7024</a></li>
+          <li><a href="https://www.instagram.com/amavia_federacao/" target="_blank" rel="noopener">@amavia_federacao</a></li>
+          <li><a href="admin.html">Área do salão</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="creditos">
+      <span>© <span id="ano"></span> Salão Alvany</span>
+      <span>Guardamos seu nome e WhatsApp só para organizar a agenda. Para apagar seus dados, é só pedir no WhatsApp.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="flutua" href="agendar.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg> Agendar</a>
+
+<script src="assets/config.js?v=20261015140849"></script>
+<script src="assets/agenda.js?v=20261015140849"></script>
+<script src="assets/site.js?v=20261015140849"></script>
+</body>
+</html>
