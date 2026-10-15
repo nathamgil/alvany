@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Zync × Salão Alvany · Proposta</title>
+<link rel="icon" href="fotos/icone.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!--
+  Apresentação comercial da Zync para a Alvani (Salão Alvany, Federação).
+  Navegação: setas ↑ ↓, menu do topo ou rolagem.
+  Desconto na hora: abra com ?fee=1500 (ou outro valor) e a calculadora e o
+  card de investimento passam a usar esse valor para a gestão de tráfego.
+-->
+<style>
+  :root{
+    --fundo:#FBF6F2; --fundo2:#F4EAE5; --cartao:#FFFFFF; --borda:#E6D3CA;
+    --texto:#24131B; --cinza:#5B4A50; --fraco:#7D6970;
+    --vinho:#7A2348; --vinho2:#9C2F5C; --vinho-esc:#3A1426; --caramelo:#C9824A; --caramelo-cl:#F0C9A6;
+    --verde:#1F8A4C; --zap:#25D366;
+    --display:'Fraunces', Georgia, serif; --corpo:'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--fundo);color:var(--texto);font-family:var(--corpo);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+  img{display:block;max-width:100%}
+  b,strong{font-weight:700}
+  :focus-visible{outline:3px solid var(--caramelo);outline-offset:3px;border-radius:6px}
+
+  /* topo */
+  .topo{position:fixed;inset:0 0 auto 0;z-index:20;height:60px;display:flex;align-items:center;gap:24px;padding:0 22px;
+    background:rgba(251,246,242,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--borda)}
+  .logo{display:flex;align-items:center;gap:10px;background:none;border:0;cursor:pointer;font:inherit;color:var(--texto)}
+  .logo .a{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--vinho2),var(--vinho));color:#fff;font-family:var(--display);font-style:italic;font-size:1.1rem}
+  .logo b{font-weight:800;letter-spacing:-.01em}
+  .logo span.x{color:var(--fraco)}
+  .menu{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+  .menu::-webkit-scrollbar{display:none}
+  .menu button{background:none;border:0;border-bottom:3px solid transparent;padding:18px 10px 15px;font:600 .82rem var(--corpo);color:var(--fraco);cursor:pointer;white-space:nowrap}
+  .menu button.on{color:var(--vinho);border-bottom-color:var(--vinho)}
+  @media(max-width:700px){ .topo{gap:10px;padding:0 12px} .logo b.zy{display:none} }
+
+  /* slides */
+  .slide{min-height:100svh;display:flex;align-items:center;padding:110px 24px 80px;scroll-margin-top:60px;position:relative}
+  .slide.alt{background:var(--fundo2)}
+  .slide.escuro{background:var(--vinho-esc);color:#fff}
+  .wrap{width:100%;max-width:1140px;margin:0 auto}
+  .olho{font-size:.78rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--vinho);display:flex;gap:10px;align-items:center;margin-bottom:14px}
+  .olho .n{background:var(--vinho);color:#fff;border-radius:6px;padding:2px 8px;letter-spacing:.05em}
+  .escuro .olho{color:var(--caramelo-cl)} .escuro .olho .n{background:var(--caramelo-cl);color:var(--vinho-esc)}
+  h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.015em;line-height:1.08}
+  h1{font-size:clamp(2.6rem,7vw,5rem)}
+  h2{font-size:clamp(2.1rem,5vw,3.4rem)}
+  h3{font-size:1.4rem}
+  h1 em,h2 em{font-style:italic;color:var(--caramelo)}
+  .lead{font-size:clamp(1.05rem,2vw,1.25rem);color:var(--cinza);max-width:46rem;margin-top:18px}
+  .escuro .lead{color:#EFE2E7}
+  .lead strong{color:var(--texto)} .escuro .lead strong{color:#fff}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .slide.in .reveal{opacity:1;transform:none}
+  .slide.in .d1{transition-delay:.1s} .slide.in .d2{transition-delay:.2s} .slide.in .d3{transition-delay:.3s}
+
+  /* capa */
+  .capa-sub{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:34px;font-size:.95rem;color:#EFE2E7}
+  .capa-sub span{display:flex;gap:8px;align-items:center}
+  .capa-sub span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--caramelo-cl)}
+  .dica{margin-top:46px;font-size:.85rem;color:#D9C2CB}
+  .dica kbd{border:1px solid #8a5a6e;border-radius:6px;padding:1px 7px;font-family:inherit}
+
+  .capa-grade{display:grid;grid-template-columns:1.35fr .65fr;gap:48px;align-items:center}
+  .capa-foto{border-radius:999px 999px 24px 24px;overflow:hidden;border:1px solid rgba(240,201,166,.35);box-shadow:0 40px 80px -40px rgba(0,0,0,.7)}
+  .capa-foto img{width:100%;aspect-ratio:3/4.2;object-fit:cover;object-position:50% 30%}
+  @media(max-width:860px){ .capa-grade{grid-template-columns:1fr} .capa-foto{max-width:300px} }
+
+  /* cartões genéricos */
+  .grade{display:grid;gap:16px;margin-top:36px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:1fr 1fr} .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:900px){ .g3,.g4{grid-template-columns:1fr 1fr} }
+  @media(max-width:620px){ .g3,.g4,.g2{grid-template-columns:1fr} }
+  .card{background:var(--cartao);border:1px solid var(--borda);border-radius:18px;padding:24px}
+  .card b.big{display:block;font-family:var(--display);font-size:2.4rem;line-height:1.05;color:var(--vinho);margin-bottom:6px}
+  .card span{color:var(--cinza);font-size:.98rem}
+  .card.ok{border-color:#9fd8b6;background:#F1FBF5}
+  .card.ok b.big{color:var(--verde)}
+  .card.alerta b.big{color:var(--caramelo)}
+  .card h3{margin-bottom:8px}
+  .card p{color:var(--cinza);font-size:.98rem}
+
+  /* funil */
+  .funil{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:38px;counter-reset:f}
+  @media(max-width:900px){ .funil{grid-template-columns:1fr 1fr} }
+  @media(max-width:520px){ .funil{grid-template-columns:1fr} }
+  .etapa{background:var(--cartao);border:1px solid var(--borda);border-radius:18px;padding:22px;position:relative}
+  .etapa .num{font:800 .75rem var(--corpo);letter-spacing:.14em;text-transform:uppercase;color:var(--vinho)}
+  .etapa h3{margin:6px 0 8px}
+  .etapa p{color:var(--cinza);font-size:.95rem}
+  .etapa .quem{display:inline-block;margin-top:12px;font-size:.8rem;font-weight:700;padding:4px 10px;border-radius:100px;background:#F6E3EA;color:var(--vinho)}
+  .etapa.feito{border-color:#9fd8b6;background:#F1FBF5}
+  .etapa.feito .quem{background:#D6F2E1;color:var(--verde)}
+
+  /* telas */
+  .telas{display:grid;grid-template-columns:1.55fr .62fr .62fr;gap:16px;align-items:end;margin-top:34px}
+  @media(max-width:900px){ .telas{grid-template-columns:1fr 1fr} .telas .pc{grid-column:span 2} }
+  .tela{border-radius:16px;overflow:hidden;border:1px solid var(--borda);box-shadow:0 30px 60px -35px rgba(58,20,38,.55);background:#fff}
+  .tela.cel{border:8px solid #24131B;border-radius:30px}
+  .lado{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,56px);align-items:center}
+  @media(max-width:900px){ .lado{grid-template-columns:1fr} }
+  .lista{list-style:none;margin-top:22px;display:grid;gap:12px}
+  .lista li{display:flex;gap:12px;align-items:flex-start;color:var(--cinza)}
+  .lista li b{color:var(--texto)}
+  .lista li::before{content:"✓";flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#F6E3EA;color:var(--vinho);font-weight:800;font-size:.8rem;margin-top:2px}
+  .escuro .lista li{color:#EFE2E7} .escuro .lista li b{color:#fff}
+  .escuro .lista li::before{background:rgba(240,201,166,.2);color:var(--caramelo-cl)}
+  .link-demo{display:inline-flex;gap:10px;align-items:center;margin-top:26px;padding:14px 22px;border-radius:100px;background:linear-gradient(135deg,var(--vinho2),var(--vinho));color:#fff;font-weight:700;text-decoration:none}
+  .zap-msg{margin-top:22px;background:#E7F8EC;border:1px solid #bfe8cd;border-radius:16px 16px 16px 4px;padding:14px 16px;font-size:.95rem;color:#173d26;max-width:30rem}
+  .zap-msg small{display:block;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--verde);margin-bottom:4px}
+
+  /* tráfego */
+  .fluxo{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:34px}
+  .fluxo .p{background:rgba(255,255,255,.08);border:1px solid rgba(240,201,166,.35);border-radius:14px;padding:14px 18px;font-weight:600}
+  .fluxo .p small{display:block;font-weight:400;font-size:.82rem;color:#D9C2CB}
+  .fluxo .s{color:var(--caramelo-cl);font-size:1.4rem}
+
+  /* calculadora */
+  .calc{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:34px;align-items:start}
+  @media(max-width:900px){ .calc{grid-template-columns:1fr} }
+  .ctrl{background:var(--cartao);border:1px solid var(--borda);border-radius:18px;padding:24px 26px}
+  .row{margin-bottom:22px}
+  .row label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:.98rem;color:var(--cinza);margin-bottom:8px}
+  .row label output{font-weight:800;color:var(--texto);font-size:1.12rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .row small{display:block;color:var(--fraco);font-size:.82rem;margin-top:4px}
+  input[type=range]{width:100%;accent-color:var(--vinho);height:28px;cursor:pointer}
+  .saida{display:flex;flex-direction:column;gap:12px}
+  .linha{display:flex;justify-content:space-between;align-items:baseline;gap:12px;background:var(--cartao);border:1px solid var(--borda);border-radius:14px;padding:14px 18px}
+  .linha span{color:var(--cinza);font-size:.95rem}
+  .linha b{font-size:1.2rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .heroi{border-radius:18px;padding:24px;text-align:center;background:linear-gradient(135deg,var(--vinho2),var(--vinho-esc));color:#fff}
+  .heroi .lab{font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--caramelo-cl)}
+  .heroi b{display:block;font-family:var(--display);font-size:clamp(3rem,7vw,4.2rem);line-height:1.05;margin:6px 0;font-variant-numeric:tabular-nums}
+  .heroi span{color:#EFE2E7;font-size:.95rem}
+  .abas-per{display:flex;gap:6px;background:var(--fundo2);border-radius:100px;padding:4px;width:max-content}
+  .abas-per button{border:0;background:none;border-radius:100px;padding:8px 16px;font:700 .88rem var(--corpo);color:var(--cinza);cursor:pointer}
+  .abas-per button.on{background:var(--vinho);color:#fff}
+  .nota{font-size:.85rem;color:var(--fraco);line-height:1.5}
+  .equilibrio{background:#FFF6EC;border:1px solid #F0D5B8;border-radius:14px;padding:14px 18px;color:#5b3a1c;font-size:.95rem}
+  .equilibrio b{color:#8a4b14}
+
+  /* investimento */
+  .precos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+  @media(max-width:900px){ .precos{grid-template-columns:1fr} }
+  .preco{background:var(--cartao);border:1px solid var(--borda);border-radius:20px;padding:26px;display:flex;flex-direction:column}
+  .preco.dest{border:2px solid var(--vinho)}
+  .preco .tag{font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--vinho)}
+  .preco .valor{font-family:var(--display);font-size:2.6rem;line-height:1.05;margin:10px 0 2px}
+  .preco .valor small{font-family:var(--corpo);font-size:1rem;color:var(--fraco)}
+  .preco .sob{color:var(--fraco);font-size:.9rem}
+  .preco ul{list-style:none;margin-top:16px;display:grid;gap:8px}
+  .preco li{padding-left:24px;position:relative;color:var(--cinza);font-size:.95rem}
+  .preco li::before{content:"✓";position:absolute;left:0;color:var(--verde);font-weight:800}
+  .ja{margin-top:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;background:#F1FBF5;border:1px solid #9fd8b6;border-radius:16px;padding:16px 20px;color:#173d26}
+  .ja b{color:var(--verde)}
+  .resumo-mes{margin-top:16px;background:var(--vinho-esc);color:#fff;border-radius:16px;padding:18px 22px;display:flex;flex-wrap:wrap;gap:8px 26px;align-items:baseline}
+  .resumo-mes b{font-family:var(--display);font-size:1.9rem}
+  .resumo-mes span{color:#EFE2E7}
+
+  /* próximos */
+  .passos{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
+  @media(max-width:900px){ .passos{grid-template-columns:1fr 1fr} }
+  @media(max-width:520px){ .passos{grid-template-columns:1fr} }
+  .passo{background:rgba(255,255,255,.07);border:1px solid rgba(240,201,166,.3);border-radius:16px;padding:20px}
+  .passo .q{font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--caramelo-cl)}
+  .passo b{display:block;margin:6px 0 4px;font-size:1.06rem}
+  .passo span{color:#EFE2E7;font-size:.92rem}
+  .rodape{margin-top:40px;color:#D9C2CB;font-size:.9rem}
+  .rodape a{color:var(--caramelo-cl)}
+
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} .reveal{opacity:1;transform:none;transition:none} }
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <button class="logo" id="logo" type="button" aria-label="Voltar ao início">
+    <span class="a" aria-hidden="true">A</span><b class="zy">Zync</b><span class="x">×</span><b>Alvany</b>
+  </button>
+  <nav class="menu" aria-label="Partes da apresentação">
+    <button type="button" data-t="s-vimos">o que vimos</button>
+    <button type="button" data-t="s-ideia">a ideia</button>
+    <button type="button" data-t="s-site">site</button>
+    <button type="button" data-t="s-painel">painel</button>
+    <button type="button" data-t="s-trafego">tráfego</button>
+    <button type="button" data-t="s-conta">a conta</button>
+    <button type="button" data-t="s-preco">investimento</button>
+    <button type="button" data-t="s-next">próximos passos</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- CAPA -->
+<section class="slide escuro" id="s-capa">
+  <div class="wrap capa-grade">
+    <div>
+    <p class="olho reveal">Zync · proposta para o Salão Alvany</p>
+    <h1 class="reveal d1">Mais clientes na cadeira,<br><em>toda semana.</em></h1>
+    <p class="lead reveal d2">Um plano simples para o salão ser <strong>encontrado</strong>, <strong>escolhido</strong> e <strong>lembrado</strong>. Com anúncio trazendo cliente nova e um sistema que chama de volta quem já veio.</p>
+    <div class="capa-sub reveal d3">
+      <span>Federação · Salvador</span><span>Site com agendamento</span><span>Painel de clientes</span><span>Tráfego pago</span>
+    </div>
+    <p class="dica reveal d3">use <kbd>↓</kbd> <kbd>↑</kbd>, o menu acima ou role a página</p>
+    </div>
+    <div class="capa-foto reveal d2"><img src="fotos/liso-longo.jpg" alt="Cabelo longo, liso e brilhante, feito no salão"></div>
+  </div>
+</section>
+
+<!-- O QUE VIMOS -->
+<section class="slide" id="s-vimos">
+  <div class="wrap">
+    <p class="olho reveal"><span class="n">01</span> o que a gente viu</p>
+    <h2 class="reveal">O salão é bom.<br><em>A internet ainda não mostra isso.</em></h2>
+    <p class="lead reveal d1">Quem já é cliente volta, e o resultado no cabelo fala por si. Mas quem <strong>ainda não conhece</strong> o salão tem pouca chance de achar e de marcar.</p>
+    <div class="grade g3 reveal d2">
+      <div class="card alerta"><b class="big">@amavia</b><span>o Instagram ainda tem o nome da parceria antiga, e não o <b>Alvany</b></span></div>
+      <div class="card alerta"><b class="big">jan/2025</b><span>foi o último post no feed. Quem procura vê um perfil parado</span></div>
+      <div class="card alerta"><b class="big">0</b><span>resultados para o salão no Google Maps. Quem busca "salão na Federação" não te encontra</span></div>
+      <div class="card alerta"><b class="big">só zap</b><span>a agenda depende de alguém responder no WhatsApp, e cliente que espera acaba indo em outro salão</span></div>
+      <div class="card alerta"><b class="big">balcão</b><span>a tabela de preços só aparece pra quem já está dentro do salão</span></div>
+      <div class="card"><b class="big">1.232</b><span>seguidoras que já conhecem o trabalho. É uma base pronta para começar</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- A IDEIA -->
+<section class="slide alt" id="s-ideia">
+  <div class="wrap">
+    <p class="olho reveal"><span class="n">02</span> a ideia</p>
+    <h2 class="reveal">Quatro passos,<br><em>um caminho só.</em></h2>
+    <p class="lead reveal d1">A cliente precisa <strong>descobrir</strong> o salão, <strong>achar</strong> no Google, <strong>escolher e marcar</strong> sem esperar, e depois <strong>ser lembrada</strong> de voltar. Hoje esse caminho tem buracos. A gente fecha um por um.</p>
+    <div class="funil reveal d2">
+      <div class="etapa"><span class="num">passo 1</span><h3>Descobrir</h3><p>Anúncio no Instagram e no Facebook para mulheres da Federação e dos bairros vizinhos.</p><span class="quem">tráfego pago</span></div>
+      <div class="etapa feito"><span class="num">passo 2</span><h3>Achar</h3><p>Salão no Google Maps, com fotos e avaliações. A plaquinha no balcão ajuda a juntar as estrelas.</p><span class="quem">✓ já fechado</span></div>
+      <div class="etapa"><span class="num">passo 3</span><h3>Escolher e marcar</h3><p>Site com serviços, preços e agenda aberta. A cliente marca sozinha, a qualquer hora.</p><span class="quem">site + agendamento</span></div>
+      <div class="etapa"><span class="num">passo 4</span><h3>Voltar</h3><p>O painel avisa quem está na hora do retoque, do botox ou da cor, com a mensagem pronta.</p><span class="quem">painel de clientes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SITE -->
+<section class="slide" id="s-site">
+  <div class="wrap">
+    <p class="olho reveal"><span class="n">03</span> o site</p>
+    <h2 class="reveal">Já está pronto.<br><em>Dá pra testar agora.</em></h2>
+    <p class="lead reveal d1">É um site de verdade, com várias páginas e não só um cartão. Tem a <strong>tabela de preços do salão</strong>, os resultados e uma agenda que mostra só o horário que está vago.</p>
+    <div class="telas reveal d2">
+      <div class="tela pc"><img src="apresentacao/site-home.png" alt="Página inicial do site do Salão Alvany no computador" loading="lazy"></div>
+      <div class="tela cel"><img src="apresentacao/cel-home.png" alt="Página inicial do site no celular" loading="lazy"></div>
+      <div class="tela cel"><img src="apresentacao/cel-agendar.png" alt="Tela de agendamento no celular, escolhendo o dia" loading="lazy"></div>
+    </div>
+    <div class="lado reveal d3" style="margin-top:28px;align-items:start">
+      <ul class="lista">
+        <li><span><b>A cliente marca sozinha</b> escolhendo o serviço, o dia e a hora. A confirmação sai na hora, com um código.</span></li>
+        <li><span><b>O tempo certo de cada serviço</b> fica reservado na agenda: permanente 3h, escova 1h. Nada de encaixe apertado.</span></li>
+        <li><span><b>Ela cancela sozinha</b> até 2h antes, e a vaga volta na hora para outra cliente.</span></li>
+      </ul>
+      <ul class="lista">
+        <li><span><b>Os preços ficam à vista</b> ("a partir de"), o que já filtra quem vem só perguntar.</span></li>
+        <li><span><b>Funciona no celular</b>, que é onde a maioria das clientes vai abrir.</span></li>
+        <li><span><b>Link na bio, no Google e nos anúncios.</b> Tudo leva pro mesmo lugar.</span></li>
+      </ul>
+    </div>
+    <a class="link-demo reveal d3" href="https://nathamgil.github.io/alvany/" target="_blank" rel="noopener">Abrir o site → nathamgil.github.io/alvany</a>
+  </div>
+</section>
+
+<!-- PAINEL -->
+<section class="slide alt" id="s-painel">
+  <div class="wrap">
+    <p class="olho reveal"><span class="n">04</span> o painel do salão</p>
+    <h2 class="reveal">A cliente que some<br><em>é a mais fácil de trazer de volta.</em></h2>
+    <div class="lado" style="margin-top:20px">
+      <div class="reveal d1">
+        <p class="lead" style="margin-top:0">Quem fez permanente vai precisar de retoque. Quem fez botox volta em mês e meio. O painel <strong>sabe disso sozinho</strong> e mostra, toda manhã, quem já passou da hora e ainda não marcou.</p>
+        <ul class="lista">
+          <li><span><b>A agenda do dia</b> mostra quanto o salão tem a receber e o primeiro horário livre.</span></li>
+          <li><span><b>Cada cliente vira uma ficha</b> com quantas vezes veio, o último serviço e as faltas.</span></li>
+          <li><span><b>"Hora de voltar"</b> traz o botão do WhatsApp com a mensagem já escrita. É só tocar e enviar.</span></li>
+          <li><span><b>A Alvani muda preço e tempo</b> no celular, e o site atualiza na hora.</span></li>
+        </ul>
+        <div class="zap-msg"><small>mensagem pronta no painel</small>Oi Natália! Aqui é a Alvani, do salão. Já faz 75 dias do seu último atendimento (permanente), a raiz já deve ter crescido, tá na hora do retoque. Quer que eu reserve um horário pra você essa semana?</div>
+      </div>
+      <div class="reveal d2" style="display:grid;gap:14px">
+        <div class="tela"><img src="apresentacao/painel-clientes.png" alt="Aba Clientes do painel, com clientes marcadas como Hora de voltar" loading="lazy"></div>
+        <div class="tela"><img src="apresentacao/painel-dia.png" alt="Agenda do dia no painel, com o total a receber" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRÁFEGO -->
+<section class="slide escuro" id="s-trafego">
+  <div class="wrap">
+    <p class="olho reveal"><span class="n">05</span> tráfego pago</p>
+    <h2 class="reveal">Anúncio que traz<br><em>cliente do bairro.</em></h2>
+    <p class="lead reveal d1">A gente cria e cuida dos anúncios no Instagram e no Facebook. Eles aparecem para <strong>mulheres da Federação e dos bairros vizinhos</strong>, mostrando o resultado no cabelo e o preço de entrada.</p>
+    <div class="fluxo reveal d2">
+      <div class="p">Anúncio<small>antes e depois, preço "a partir de"</small></div><span class="s">→</span>
+      <div class="p">WhatsApp ou site<small>a cliente chama ou marca na hora</small></div><span class="s">→</span>
+      <div class="p">Cadeira<small>atendimento no salão</small></div><span class="s">→</span>
+      <div class="p">Painel<small>vira cliente fixa, e o salão chama de volta</small></div>
+    </div>
+    <div class="lado reveal d3" style="margin-top:30px;align-items:start">
+      <ul class="lista">
+        <li><span><b>Quem vê:</b> mulheres de 20 a 55 anos na Federação, Ondina, Rio Vermelho, Garcia, Engenho Velho, Vasco da Gama e Brotas.</span></li>
+        <li><span><b>O que vê:</b> o permanente, a progressiva e o botox, que são os serviços com o ticket maior.</span></li>
+        <li><span><b>Datas fortes:</b> volta às aulas, Carnaval, São João e fim de ano têm campanha própria.</span></li>
+      </ul>
+      <ul class="lista">
+        <li><span><b>Criativos feitos pela Zync:</b> artes e vídeos com os resultados do próprio salão.</span></li>
+        <li><span><b>Relatório todo mês:</b> quanto foi investido, quantas pessoas chamaram e quantas viraram cliente.</span></li>
+        <li><span><b>A verba vai direto para a Meta,</b> no cartão do salão. A Zync não fica com nenhum centavo dela.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- A CONTA -->
+<section class="slide" id="s-conta">
+  <div class="wrap">
+    <p class="olho reveal"><span class="n">06</span> a conta</p>
+    <h2 class="reveal">Quanto isso <em>volta pro salão?</em></h2>
+    <p class="lead reveal d1">Mexa nos números. O ticket usa a <strong>tabela de preços do salão</strong>, e o investimento soma tudo: gestão, manutenção, verba e o site dividido em 6 meses.</p>
+    <div class="calc reveal d2">
+      <div class="ctrl">
+        <div class="row">
+          <label for="rVerba">verba de anúncio por mês <output id="oVerba">R$ 1.000</output></label>
+          <input type="range" id="rVerba" min="600" max="3000" step="100" value="1000">
+          <small>paga direto para a Meta</small>
+        </div>
+        <div class="row">
+          <label for="rCac">custo para trazer uma cliente nova <output id="oCac">R$ 40</output></label>
+          <input type="range" id="rCac" min="20" max="100" step="5" value="40">
+          <small>quanto de anúncio sai, em média, para uma cliente sentar na cadeira</small>
+        </div>
+        <div class="row">
+          <label for="rTicket">ticket médio por atendimento <output id="oTicket">R$ 130</output></label>
+          <input type="range" id="rTicket" min="50" max="250" step="10" value="130">
+          <small>tabela do salão: escova R$ 50 · botox R$ 130 · progressiva R$ 180 · permanente R$ 200</small>
+        </div>
+        <div class="row">
+          <label for="rVolta">clientes antigas que voltam pelo painel, por mês <output id="oVolta">8</output></label>
+          <input type="range" id="rVolta" min="0" max="30" step="1" value="8">
+          <small>clientes que estavam sumidas e marcaram depois da mensagem de "hora de voltar"</small>
+        </div>
+        <div class="row" style="margin-bottom:0">
+          <label for="rRet">vezes que cada cliente nova volta em 6 meses <output id="oRet">1</output></label>
+          <input type="range" id="rRet" min="0" max="4" step="1" value="1">
+          <small>retoque, botox, escova…</small>
+        </div>
+      </div>
+
+      <div class="saida">
+        <div class="abas-per" role="tablist" aria-label="Período">
+          <button type="button" class="on" data-per="seis">em 6 meses</button>
+          <button type="button" data-per="mes">por mês</button>
+        </div>
+        <div class="linha"><span>clientes novas vindas do anúncio</span><b id="vNovas">25</b></div>
+        <div class="linha"><span>atendimentos gerados</span><b id="vAtend">33</b></div>
+        <div class="linha"><span>faturamento gerado</span><b id="vFat" style="color:var(--verde)">R$ 4.290</b></div>
+        <div class="linha"><span>investimento total</span><b id="vInv">R$ 3.317</b></div>
+        <div class="heroi">
+          <span class="lab">retorno sobre o investimento</span>
+          <b id="vX">1,3×</b>
+          <span id="vFrase">R$ 1,30 de faturamento para cada R$ 1,00 investido</span>
+        </div>
+        <div class="equilibrio">Ponto de equilíbrio: <b id="vBe">26 atendimentos</b> por mês pagam o investimento inteiro. A partir daí, todo atendimento é ganho.</div>
+        <p class="nota">É uma simulação com números de referência, não uma promessa. Faturamento não é lucro: o custo de produto de cada serviço continua por conta do salão. O número real a gente mede todo mês no relatório e no painel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section class="slide alt" id="s-preco">
+  <div class="wrap">
+    <p class="olho reveal"><span class="n">07</span> investimento</p>
+    <h2 class="reveal">O que entra<br><em>e quanto custa.</em></h2>
+    <div class="precos reveal d1">
+      <div class="preco">
+        <span class="tag">site + agenda + painel</span>
+        <div class="valor">R$ 2.200</div>
+        <span class="sob">pagamento único</span>
+        <ul>
+          <li>Site completo, com várias páginas e a tabela de preços</li>
+          <li>Agendamento online com confirmação na hora</li>
+          <li>Painel de clientes com o "hora de voltar"</li>
+          <li>Banco de dados no nome do salão</li>
+        </ul>
+      </div>
+      <div class="preco dest">
+        <span class="tag">gestão de tráfego</span>
+        <div class="valor"><span id="pFee">R$ 1.700</span><small> /mês</small></div>
+        <span class="sob">criação, anúncios e relatório</span>
+        <ul>
+          <li>Planejamento e público por bairro</li>
+          <li>Artes e vídeos dos anúncios</li>
+          <li>Acompanhamento e ajuste toda semana</li>
+          <li>Relatório mensal com o retorno</li>
+        </ul>
+      </div>
+      <div class="preco">
+        <span class="tag">manutenção do site</span>
+        <div class="valor">R$ 250<small> /mês</small></div>
+        <span class="sob">site sempre no ar e atualizado</span>
+        <ul>
+          <li>Hospedagem e segurança</li>
+          <li>Troca de fotos, preços e serviços</li>
+          <li>Suporte no painel e na agenda</li>
+          <li>Ajustes e melhorias</li>
+        </ul>
+      </div>
+    </div>
+    <div class="resumo-mes reveal d2">
+      <span>por mês, depois do site:</span><b id="pMes">R$ 1.950</b><span>+ a verba de anúncio, a partir de R$ 600, paga direto para a Meta</span>
+    </div>
+    <div class="ja reveal d3"><b>✓ Já fechado:</b> Google Meu Negócio + plaquinha de avaliação, R$ 550. Esse é o passo 2 do caminho, e ele já está andando.</div>
+  </div>
+</section>
+
+<!-- PRÓXIMOS -->
+<section class="slide escuro" id="s-next">
+  <div class="wrap">
+    <p class="olho reveal"><span class="n">08</span> próximos passos</p>
+    <h2 class="reveal">Do sim de hoje<br><em>ao salão cheio.</em></h2>
+    <div class="passos reveal d1">
+      <div class="passo"><span class="q">hoje</span><b>Aprovação</b><span>fechamos o que entra e a forma de pagamento</span></div>
+      <div class="passo"><span class="q">semana 1</span><b>Ajustes finais</b><span>fotos, endereço, horário e quem atende. O site entra no ar com o domínio do salão</span></div>
+      <div class="passo"><span class="q">semana 2</span><b>Anúncios no ar</b><span>primeiras campanhas rodando e clientes chamando</span></div>
+      <div class="passo"><span class="q">dia 30</span><b>Primeiro relatório</b><span>quanto entrou, quanto custou e o que ajustar</span></div>
+    </div>
+    <p class="rodape reveal d2">Zync · crescimento digital para negócios locais · <a href="https://zynchub.com.br" target="_blank" rel="noopener">zynchub.com.br</a></p>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var reduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function $(id) { return document.getElementById(id); }
+  var brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+  function reais(v) { return brl.format(Math.round(v)).replace(/ /g, ' '); }
+
+  /* ---- valores comerciais (desconto na hora: ?fee=1500) ---- */
+  var q = new URLSearchParams(location.search);
+  var FEE = +q.get('fee') || 1700;   // gestão de tráfego / mês
+  var MANUT = 250;                    // manutenção do site / mês
+  var SITE = 2200;                    // site, pagamento único
+  var MESES = 6;                      // ciclo usado para diluir o site
+  $('pFee').textContent = reais(FEE);
+  $('pMes').textContent = reais(FEE + MANUT);
+
+  /* ---- calculadora ---- */
+  var r = { verba: $('rVerba'), cac: $('rCac'), ticket: $('rTicket'), volta: $('rVolta'), ret: $('rRet') };
+  var periodo = 'seis';
+  function calc() {
+    var verba = +r.verba.value, cac = +r.cac.value, ticket = +r.ticket.value, volta = +r.volta.value, ret = +r.ret.value;
+    var novasMes = Math.floor(verba / cac);
+    var invMes = FEE + MANUT + verba + SITE / MESES;
+    // em 6 meses, quem entrou no mês 1 tem mais tempo para voltar que quem entrou no mês 6:
+    // soma de (6-m)/6 para m = 0..5 = 3,5 "meses cheios" de retorno
+    var novas = periodo === 'mes' ? novasMes : novasMes * MESES;
+    var atend = periodo === 'mes'
+      ? novasMes + volta
+      : novasMes * MESES + Math.round(novasMes * ret * 3.5) + volta * MESES;
+    var fat = atend * ticket;
+    var inv = periodo === 'mes' ? invMes : (FEE + MANUT + verba) * MESES + SITE;
+    var x = fat / inv;
+    var be = Math.ceil(invMes / ticket);
+
+    $('oVerba').textContent = reais(verba);
+    $('oCac').textContent = reais(cac);
+    $('oTicket').textContent = reais(ticket);
+    $('oVolta').textContent = volta;
+    $('oRet').textContent = ret;
+    $('vNovas').textContent = novas;
+    $('vAtend').textContent = atend;
+    $('vFat').textContent = reais(fat);
+    $('vInv').textContent = reais(inv);
+    var xr = Math.round(x * 10) / 10;   // mesmo arredondamento no número grande e na frase
+    $('vX').textContent = xr.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '×';
+    $('vFrase').textContent = 'R$ ' + xr.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' de faturamento para cada R$ 1,00 investido';
+    $('vBe').textContent = be + (be === 1 ? ' atendimento' : ' atendimentos');
+  }
+  Object.keys(r).forEach(function (k) { r[k].addEventListener('input', calc); });
+  Array.prototype.forEach.call(document.querySelectorAll('.abas-per button'), function (b) {
+    b.addEventListener('click', function () {
+      periodo = b.getAttribute('data-per');
+      Array.prototype.forEach.call(document.querySelectorAll('.abas-per button'), function (x) { x.classList.toggle('on', x === b); });
+      calc();
+    });
+  });
+  calc();
+
+  /* ---- navegação: menu, entrada dos slides, teclado ---- */
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var botoes = Array.prototype.slice.call(document.querySelectorAll('.menu button'));
+  function vai(el) { el.scrollIntoView({ behavior: reduzido ? 'auto' : 'smooth' }); }
+  botoes.forEach(function (b) { b.addEventListener('click', function () { vai($(b.dataset.t)); }); });
+  $('logo').addEventListener('click', function () { vai(slides[0]); });
+
+  var disparou = false;
+  var io = new IntersectionObserver(function (es) {
+    disparou = true;
+    es.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.1 });
+  slides.forEach(function (s) { io.observe(s); });
+  // rede de segurança: nunca abrir em branco
+  setTimeout(function () { if (!disparou) slides.forEach(function (s) { s.classList.add('in'); }); }, 1500);
+
+  var atual = 0;
+  function marca() {
+    var meio = window.scrollY + window.innerHeight / 2, melhor = 0;
+    slides.forEach(function (s, i) { if (s.offsetTop <= meio) melhor = i; });
+    atual = melhor;
+    botoes.forEach(function (b) { b.classList.toggle('on', b.dataset.t === slides[melhor].id); });
+  }
+  window.addEventListener('scroll', marca, { passive: true });
+  marca();
+
+  document.addEventListener('keydown', function (e) {
+    if (e.target.tagName === 'INPUT') return;
+    var ir = null;
+    if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') ir = Math.min(atual + 1, slides.length - 1);
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') ir = Math.max(atual - 1, 0);
+    if (ir !== null) { e.preventDefault(); vai(slides[ir]); }
+  });
+})();
+</script>
+</body>
+</html>
